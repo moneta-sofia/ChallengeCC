@@ -5,16 +5,10 @@ Prerequisites
 -------------
 
 * [Git](http://git-scm.com/)
-* [MySQL](https://www.mysql.com/)
-
-Option one (preferred)
-* [Ruby](https://www.ruby-lang.org)
-* Ruby framework of your choice (Rails preferred)
-
-Option two
 * [nodejs](https://nodejs.org/en/)
+* [express](https://express-validator.github.io/docs)
+* [jest](https://jestjs.io/)
 * nodejs framework of your choice
-
 * You can use any additional libraries you want.
 
 Project description
@@ -22,7 +16,7 @@ Project description
 
 **Pizzeria**
 
-This application serves the purpose of exposing a JSON API to be consumed by a frontend client for ordering pizza.
+This application serves the purpose of exposing a JSON API to be consumed by a frontend client for ordering pizza. The development of an actual DB is not required.
 
 The following entities should be created (including proper relations):
 
