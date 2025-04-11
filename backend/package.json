@@ -1,0 +1,24 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "Chellenge for CodingCloud",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/moneta-sofia/ChallengeCC.git"
+  },
+  "author": "Sofia Moneta",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/moneta-sofia/ChallengeCC/issues"
+  },
+  "homepage": "https://github.com/moneta-sofia/ChallengeCC#readme",
+  "dependencies": {
+    "axios": "^1.8.4",
+    "express": "^5.1.0",
+    "express-validator": "^7.2.1"
+  }
+}
