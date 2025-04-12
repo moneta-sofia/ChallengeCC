@@ -2,6 +2,7 @@ const express = require('express');
 const dotenv = require('dotenv').config();
 const app = express();
 const Pizza = require('./routes/pizzaRoutes');
+const Order = require('./routes/orderRoutes');
 
 app.use(express.json()); 
 
@@ -13,6 +14,7 @@ app.get('/ping', (req, res) => {
 
 
 app.use('/api/pizza', Pizza);
+app.use('/api/order', Order);
 
 
 module.exports = app;
