@@ -20,3 +20,13 @@ exports.getAllPizzas = async (req, res) => {
         res.status(500).json({ message: 'Error getting pizzas' });
     }
 }
+
+exports.getOnePizza = async (req, res) => {
+    const { id } = req.params;
+    try{
+        res.status(200).json(await pizzaService.getOnePizza(id));
+    } catch (error) {
+        console.error('Error getting pizza with id ' + id, error)
+        res.status(500).json({ message: 'Error getting pizza with id ' + id })
+    }
+}
