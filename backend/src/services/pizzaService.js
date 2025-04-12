@@ -1,6 +1,7 @@
 const Pizza = require('../db/models/Pizza'); 
-// post
 
+
+// post
 exports.createPizza = async (pizzaData) => {
     const { name, price, ingredients, image } = pizzaData;
     try {
@@ -18,11 +19,30 @@ exports.createPizza = async (pizzaData) => {
     }
 };
 
+// get all
+exports.getAllPizzas = async () => {
+    try{
+        return await Pizza.find();
+    } catch (error) {
+        console.error('Error getting pizzas ' + error)
+        throw new Error('Error getting pizzas');
+        
+    }
+}
+
+//delete 
+// exports.deletePizza = async (id) => {
+//     try{
+//         const pizzaExists = await Pizza.findByIdAndDelete(id);
+//     } catch (error) {
+
+//     }
+// };
+
 
 // get one
 
 
-// get all
 
 
-//delete 
+

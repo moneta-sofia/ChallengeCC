@@ -10,3 +10,13 @@ exports.createPizza = async (req, res) => {
         res.status(500).json({ message: 'Error creating pizza' });
     }
 };
+
+exports.getAllPizzas = async (req, res) => {
+    try{
+        const pizzas = await pizzaService.getAllPizzas();
+        res.status(200).json(pizzas);
+    } catch (error) {
+        console.error('Error creating pizza:', error);
+        res.status(500).json({ message: 'Error getting pizzas' });
+    }
+}
