@@ -1,4 +1,4 @@
-const { mongoose } = require('../connection.js')
+const { mongoose } = require('../connection.js');
 const { Schema } = mongoose;
 
 const PizzaSchema = new Schema({
@@ -18,6 +18,6 @@ const PizzaSchema = new Schema({
         type: String,
         required: true,
     }
-})
+});
 
 module.exports = mongoose.model('Pizza', PizzaSchema);

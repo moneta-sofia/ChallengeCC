@@ -1,6 +1,7 @@
-import mongoose, { Schema } from "mongoose";
+const { mongoose } = require('../connection.js')
+const { Schema } = mongoose;
 
-const OrderSchema = new mongoose.Schema({
+const OrderSchema = new Schema({
     status: {
         type: String,
         required: true,
@@ -17,5 +18,4 @@ const OrderSchema = new mongoose.Schema({
     }
 });
 
-const Order = mongoose.model('Order', OrderSchema);
-export default Order;
+module.exports = mongoose.model('Order', OrderSchema);
