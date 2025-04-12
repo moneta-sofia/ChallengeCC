@@ -1,12 +1,10 @@
-express = require('express');
+const express = require('express');
+const app = require('./src/app');
+const dotenv = require('dotenv').config();
+
 
 const PORT = process.env.PORT || 5050;
-const app = express();
 
-// Endpoint to test the server
-app.get('/ping', (req, res) => {
-    res.send('pong');
-});
 
 app.listen(PORT, () => {
     console.log('Server is running on port ' + PORT);
