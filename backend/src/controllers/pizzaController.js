@@ -24,7 +24,11 @@ exports.getAllPizzas = async (req, res) => {
 exports.getOnePizza = async (req, res) => {
     const { id } = req.params;
     try{
-        res.status(200).json(await pizzaService.getOnePizza(id));
+        const pizzaFound = await pizzaService.getOnePizza(id);
+
+        // If pizza exists return the pizza, otherwise throw 404
+        pizzaFound ? res.status(200).json(pizzaFound) : res.status(404).json({ message: 'Pizza not found with ID: ' + id}) 
+        
     } catch (error) {
         console.error('Error getting pizza with id ' + id, error)
         res.status(500).json({ message: 'Error getting pizza with id ' + id })

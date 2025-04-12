@@ -1,4 +1,4 @@
-const { check } = require('express-validator');
+const { check, param } = require('express-validator');
 const { validateResults } = require('./validatorHelper');
 
 const validateCreatePizza = [
@@ -25,6 +25,15 @@ const validateCreatePizza = [
     }
 ]
 
+const validateFindPizza = [
+    param('id')
+        .notEmpty().withMessage('Id is required')
+        .isMongoId().withMessage('Id invalid'),
+    (req, res, next) => {
+        validateResults(req, res, next);
+    }
+]
+
 module.exports = {
-    validateCreatePizza
+    validateCreatePizza, validateFindPizza
 }
