@@ -24,7 +24,7 @@ exports.getAllPizzas = async () => {
     try{
         return await Pizza.find();
     } catch (error) {
-        console.error('Error getting pizzas ' + error);
+        console.error('Error getting pizzas ', error);
         throw new Error('Error getting pizzas');
     }
 }
@@ -34,7 +34,7 @@ exports.getOnePizza = async (id) => {
     try{
         return await Pizza.findById(id);
     } catch (error) {
-        console.error('Error getting pizza with id ' + id + ' ' + error);
+        console.error('Error getting pizza with id ' + id + ' ', error);
         throw new Error('Error getting pizza with id ' + id);
     }
 }
@@ -45,7 +45,7 @@ exports.deletePizza = async (id) => {
     try{
         return await Pizza.findByIdAndDelete(id);
     } catch (error) {
-        console.error('Error deleting pizza with id ' + id + ' ' + error);
+        console.error('Error deleting pizza with id ' + id + ' ', error);
         throw new Error('Error deleting pizza with id ' + id);
     }
 };
@@ -58,7 +58,7 @@ exports.patchPizza = async (id, newPizza) => {
         if (!pizzaFound) return null;
         return await Pizza.findByIdAndUpdate(pizzaFound._id, newPizza);
     } catch (error) {
-        console.error('Error updating pizza with id ' + id + ' ' + error);
+        console.error('Error updating pizza with id ' + id + ' ', error);
         throw new Error('Error updating pizza with id ' + id);
     }
 }
