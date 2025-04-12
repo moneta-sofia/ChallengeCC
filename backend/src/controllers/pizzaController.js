@@ -19,7 +19,7 @@ exports.getAllPizzas = async (req, res) => {
         console.error('Error creating pizza:', error);
         res.status(500).json({ message: 'Error getting pizzas' });
     }
-}
+};
 
 exports.getOnePizza = async (req, res) => {
     const { id } = req.params;
@@ -32,5 +32,16 @@ exports.getOnePizza = async (req, res) => {
     } catch (error) {
         console.error('Error getting pizza with id ' + id, error)
         res.status(500).json({ message: 'Error getting pizza with id ' + id })
+    }
+};
+
+exports.deletePizza = async (req, res) => {
+    const { id } = req.params;
+    try{
+        const deletedPizza = await pizzaService.deletePizza(id);
+        deletedPizza !== null ? res.status(200).json({ message: 'OK'}) : res.status(404).json({ message: 'Pizza not found with ID ' + id }) 
+    } catch {  
+        console.error('Error deleting pizza with id ' + id, error)
+        res.status(500).json({ message: 'Error deleting pizza with id ' + id })
     }
 }

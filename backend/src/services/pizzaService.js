@@ -41,13 +41,14 @@ exports.getOnePizza = async (id) => {
 
 
 //delete 
-// exports.deletePizza = async (id) => {
-//     try{
-//         const pizzaExists = await Pizza.findByIdAndDelete(id);
-//     } catch (error) {
-
-//     }
-// };
+exports.deletePizza = async (id) => {
+    try{
+        return await Pizza.findByIdAndDelete(id);
+    } catch (error) {
+        console.error('Error deleting pizza with id ' + id + ' ' + error);
+        throw new Error('Error deleting pizza with id ' + id);
+    }
+};
 
 
 
