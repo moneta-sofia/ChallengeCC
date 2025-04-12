@@ -27,7 +27,7 @@ exports.getOnePizza = async (req, res) => {
         const pizzaFound = await pizzaService.getOnePizza(id);
 
         // If pizza exists return the pizza, otherwise throw 404
-        pizzaFound ? res.status(200).json(pizzaFound) : res.status(404).json({ message: 'Pizza not found with ID: ' + id}) 
+        pizzaFound ? res.status(200).json(pizzaFound) : res.status(404).json({ message: 'Pizza not found with ID: ' + id});
         
     } catch (error) {
         console.error('Error getting pizza with id ' + id, error)
@@ -39,9 +39,22 @@ exports.deletePizza = async (req, res) => {
     const { id } = req.params;
     try{
         const deletedPizza = await pizzaService.deletePizza(id);
-        deletedPizza !== null ? res.status(200).json({ message: 'OK'}) : res.status(404).json({ message: 'Pizza not found with ID ' + id }) 
+        deletedPizza !== null ? res.status(200).json({ message: 'OK'}) : res.status(404).json({ message: 'Pizza not found with ID ' + id });
     } catch {  
         console.error('Error deleting pizza with id ' + id, error)
         res.status(500).json({ message: 'Error deleting pizza with id ' + id })
+    }
+}
+
+
+exports.patchPizza = async (req, res) => {
+    const { id } = req.params;
+    const newPizza = req.body;
+    try {
+        const result = await pizzaService.patchPizza(id, newPizza);        
+        result === null ? res.status(404).json({ message: 'Pizza not found with ID ' + id }) : res.status(200).json({ message: 'OK'});
+    } catch (error) {
+        console.error('Error updating pizza with id ' + id, error)
+        res.status(500).json({ message: 'Error updating pizza with id ' + id })
     }
 }

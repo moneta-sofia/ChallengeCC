@@ -51,6 +51,18 @@ exports.deletePizza = async (id) => {
 };
 
 
+//patch
+exports.patchPizza = async (id, newPizza) => {
+    try {
+        const pizzaFound = await Pizza.findById(id);
+        if (!pizzaFound) return null;
+        return await Pizza.findByIdAndUpdate(pizzaFound._id, newPizza);
+    } catch (error) {
+        console.error('Error updating pizza with id ' + id + ' ' + error);
+        throw new Error('Error updating pizza with id ' + id);
+    }
+}
+
 
 
 

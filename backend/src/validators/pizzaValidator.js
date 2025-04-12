@@ -34,6 +34,27 @@ const validateFindPizza = [
     }
 ]
 
+const validatePatchPizza = [
+    param('id')
+        .notEmpty().withMessage('Id is required')
+        .isMongoId().withMessage('Id invalid'),
+    check('price')
+        .optional()
+        .isNumeric()
+        .withMessage('Price must be a number'),
+    check('ingredients')
+        .optional()
+        .isArray()
+        .withMessage('Ingredients must be an array'),
+    check('image')
+        .optional()
+        .isURL()
+        .withMessage('Image must be a valid URL'),
+    (req, res, next) => {
+        validateResults(req, res, next);
+    }
+]
+
 module.exports = {
-    validateCreatePizza, validateFindPizza
+    validateCreatePizza, validateFindPizza, validatePatchPizza
 }
