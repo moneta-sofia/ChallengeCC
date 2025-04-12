@@ -1,6 +1,7 @@
-import mongoose from "mongoose";
+const { mongoose } = require('../connection.js')
+const { Schema } = mongoose;
 
-const PizzaSchema = new mongoose.Schema({
+const PizzaSchema = new Schema({
     name: {
         type: String,
         required: true,
@@ -19,5 +20,4 @@ const PizzaSchema = new mongoose.Schema({
     }
 })
 
-const Pizza = mongoose.model('Pizza', PizzaSchema);
-export default Pizza;
+module.exports = mongoose.model('Pizza', PizzaSchema);
