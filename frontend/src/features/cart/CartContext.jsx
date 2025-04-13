@@ -1,32 +1,19 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useEffect, useMemo, useState } from "react";
 
 export const CartContext = createContext({});
 
 export const CartProvider = (props) => {
     const [pizzasSlected, setPizzasSelected] = useState([])
-    let totalProducts = 0;
-    let totalPrice = 0;
 
 
-    const pizzasSlectedQuantity = () => {
-        pizzasSlected.map((pizza) => {
-            totalProducts += pizza.quantity;
-        })
-        return totalProducts;
-    }
+    const totalProducts = useMemo(() => {
+        return pizzasSlected.reduce((acc, item) => acc + item.quantity, 0);
+    }, [pizzasSlected]);
 
-    const pizzasSlectedPrice = () => {
-        pizzasSlected.map((pizza) => {
-            totalPrice += pizza.quantity * pizza.pizza.price;
-        })
-        return totalProducts;
-    }
 
-    useEffect(() => {
-        pizzasSlectedQuantity();
-        pizzasSlectedPrice();
-    },[pizzasSlected])
-    
+    const totalPrice = useMemo(() => {
+        return pizzasSlected.reduce((acc, item) => acc + item.quantity * item.pizza.price, 0);
+    }, [pizzasSlected]);
 
     
     const addPizzaToCart = (newPizza) => {
