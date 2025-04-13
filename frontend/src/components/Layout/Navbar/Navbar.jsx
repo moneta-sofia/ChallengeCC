@@ -12,7 +12,7 @@ export default function Navbar(){
 
     return(
     <>
-        <div className="fixed w-11/12 self-center rounded-4xl my-7 py-4 px-10 flex justify-between z-3 bg-white">
+        <div className="fixed w-11/12 shadow-2xl self-center rounded-4xl my-7 py-4 px-10 flex justify-between z-3 bg-white">
             <div className="flex justify-center items-center">
                 <h1 className="text-4xl font-pizzaria">Pizza Challenge</h1>
             </div>

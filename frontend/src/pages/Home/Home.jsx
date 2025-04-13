@@ -24,7 +24,7 @@ export default function Home () {
 
     return(
         <div className="w-full mt-40">
-            <h1 className="text-white text-4xl my-7 font-bold">Here you can find the best pizzas!</h1>
+            <h1 className="text-white text-4xl my-7 text-center font-bold">Here you can find the best pizzas!</h1>
             <div className="flex flex-wrap  justify-between">
                 {
                     pizzas.map((pizza) => {
