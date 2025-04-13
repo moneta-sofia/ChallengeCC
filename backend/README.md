@@ -1,30 +1,62 @@
-Backend
-=======
+## 🔧 Backend - Pizza API
 
-Prerequisites
--------------
+Este backend gestiona la lógica de negocio de la aplicación Pizza Shop. Expone una API REST con rutas para manejar productos (pizzas) y órdenes.
 
-* [Git](http://git-scm.com/)
-* [nodejs](https://nodejs.org/en/)
-* [express](https://express-validator.github.io/docs)
-* [jest](https://jestjs.io/)
-* nodejs framework of your choice
-* You can use any additional libraries you want.
+---
 
-Project description
--------------------
+## 🚀 Tecnologías
 
-**Pizzeria**
+- Node.js + Express
+- MongoDB + Mongoose
+- dotenv
+- express-validator
+- cors
 
-This application serves the purpose of exposing a JSON API to be consumed by a frontend client for ordering pizza. The development of an actual DB is not required.
+---
 
-The following entities should be created (including proper relations):
+## ⚙️ ¿Cómo ejecutar el backend?
 
-* *pizza* - has a name and price (e.g. Margherita $5, Pepperoni $6, ...)
-* *order* - has items
-* *order item* - has a pizza and quantity
+### 1. Instalación
 
-The following endpoints should return a JSON response:
-* `/api/orders` (list of orders)
-* `/api/orders/:id` (details of an individual order)
-* `/api/pizzas` (list of pizzas; see './backend/example-pizzas.json')
+```
+npm install
+```
+2. Archivo .env
+En la raíz del backend, creá un archivo .env con:
+
+MONGODB_URI=mongodb://localhost:27017/pizza-shop
+Asegurate de tener MongoDB corriendo en tu máquina o usar un servicio remoto (como Atlas).
+
+3. Ejecutar el servidor
+```
+npm start
+```
+Esto levantará el servidor en http://localhost:5050.
+
+## 📌 Endpoints principales
+
+# 🧀 /api/pizza
+Método	Ruta	Descripción
+GET	/	Listar todas las pizzas
+POST	/	Crear una nueva pizza
+GET	/:id	Obtener pizza por ID
+PATCH	/:id	Editar una pizza
+DELETE	/:id	Eliminar una pizza
+
+# 🧾 /api/order
+Método	Ruta	Descripción
+GET	/	Listar todas las órdenes
+POST	/	Crear nueva orden
+GET	/:id	Obtener orden por ID
+PATCH	/:id	Editar una orden
+DELETE	/:id	Eliminar una orden
+
+# 🔍 Validaciones
+Validación de campos requeridos
+
+status de orden debe ser pending, completed, o cancelled
+
+Validación de IDs y URLs
+
+## 🧑‍💻 Autora
+Sofía Moneta
