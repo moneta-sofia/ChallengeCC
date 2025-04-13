@@ -8,9 +8,17 @@ const OrderSchema = new Schema({
         enum: ['pending', 'completed', 'cancelled'],
     },
     products: [{
-        type: Schema.Types.ObjectId,
-        ref: 'Pizza',
-        required: true,
+        pizza: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Pizza',
+            required: true,
+        },
+        quantity: {
+            type: Number,
+            required: true,
+            min:1,
+        },
+        _id: false,
     }],
     date: {
         type: Date,
