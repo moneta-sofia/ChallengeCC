@@ -1,0 +1,20 @@
+@import "tailwindcss";
+
+
+#app {
+    background-image: url(../assets/background.png);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+@font-face {
+    font-family: 'PIZZARIA';
+    src: url('../assets/PIZZARIA.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}  
+
+.font-pizzaria {
+    font-family: 'PIZZARIA', sans-serif;
+}
