@@ -6,9 +6,10 @@ export default function PizzaCard ({pizzaData}) {
 
     const {addPizzaToCart} = useContext(CartContext);
     return(
-        <div className="w-2xs rounded-3xl border-solid border-2 p-3 my-3 flex flex-col content-center items-center justify-between " key={pizzaData._id}>
-            <img className="w-2/3" src={pizzaData.image}/>
+        <div className="relative w-2xs rounded-3xl border-solid border-2 p-3 my-16 flex flex-col content-center items-center justify-between " key={pizzaData._id}>
+            <img className="w-2/3 relative scale-120 -top-10" src={pizzaData.image}/>
             <h3 className="text-3xl text-center font-bold mb-4">{pizzaData.name}</h3>
+            <p className="text-2xl font-medium">${pizzaData.price}</p>
             <div className="text-left w-2/3 my-3">
                 <p className="text-2xl">Ingredients:</p>
                 {
