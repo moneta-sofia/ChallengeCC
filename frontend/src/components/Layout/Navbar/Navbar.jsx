@@ -5,7 +5,7 @@ import { FaHistory } from "react-icons/fa";
 export default function Navbar(){
     return(
     <>
-        <div className="w-11/12 rounded-4xl m-5 py-4 px-10 flex justify-between  border-solid border-2 border-b-cyan-700">
+        <div className="w-full rounded-4xl my-5 py-4 px-10 flex justify-between  border-solid border-2 border-b-cyan-700">
             <div>
                 <h1>Pizzas Cloud</h1>
                 <h3>Tastes like a cloud</h3>
