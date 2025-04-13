@@ -23,6 +23,13 @@ Ambas aplicaciones funcionan localmente de manera independiente pero están cone
 
 ---
 
+## 📬 Colección de Postman
+
+Podés revisar y probar todos los endpoints desde esta colección pública en Postman:
+
+👉 [Abrir en Postman](https://www.postman.com/elxrojoxteam/challengecc/request/rvyjliq)
+
+
 ## 🚀 ¿Cómo ejecutar el proyecto?
 
 ### 1. Cloná el repositorio
