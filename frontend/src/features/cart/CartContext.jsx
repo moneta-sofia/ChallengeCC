@@ -4,6 +4,29 @@ export const CartContext = createContext({});
 
 export const CartProvider = (props) => {
     const [pizzasSlected, setPizzasSelected] = useState([])
+    let totalProducts = 0;
+    let totalPrice = 0;
+
+
+    const pizzasSlectedQuantity = () => {
+        pizzasSlected.map((pizza) => {
+            totalProducts += pizza.quantity;
+        })
+        return totalProducts;
+    }
+
+    const pizzasSlectedPrice = () => {
+        pizzasSlected.map((pizza) => {
+            totalPrice += pizza.quantity * pizza.pizza.price;
+        })
+        return totalProducts;
+    }
+
+    useEffect(() => {
+        pizzasSlectedQuantity();
+        pizzasSlectedPrice();
+    },[pizzasSlected])
+    
 
     
     const addPizzaToCart = (newPizza) => {
@@ -74,7 +97,9 @@ useEffect(() => {
         pizzasSlected,
         addPizzaToCart,
         deletePizzaFromCart,
-        resetCart
+        resetCart,
+        totalProducts,
+        totalPrice
     }
 
     return <CartContext.Provider value={value}>{props.children}</CartContext.Provider>;
