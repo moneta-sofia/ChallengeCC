@@ -77,8 +77,17 @@ exports.getOneOrder = async (orderId) => {
     try {
         return await Order.findById(orderId);
     } catch (error) {
-        console.error('Error getting orders ', error);
-        throw new Error('Error getting orders');
+        console.error('Error getting order ', error);
+        throw new Error('Error getting order');
+    }
+}
+
+exports.deleteOrder = async (orderId) => {
+    try {
+        return await Order.findByIdAndDelete(orderId);
+    } catch (error) {
+        console.error('Error deleting orders ', error);
+        throw new Error('Error deleting orders');
     }
 }
 
