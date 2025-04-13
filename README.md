@@ -37,7 +37,8 @@ Edit
 cd backend
 npm install
 npm start
-Asegurate de tener una base de datos MongoDB corriendo y la variable MONGODB_URI en un archivo .env.
+Asegurate de tener una base de datos MongoDB corriendo y la variable MONGODB_URI en un archivo .env. 
+
 
 3. Iniciar Frontend
 En una nueva terminal:
@@ -48,6 +49,9 @@ Edit
 cd frontend
 npm install
 npm run dev
-🧑‍💻 Autora
+
+
+
+## 🧑‍💻 Autora
 Sofía Moneta
 Repositorio en GitHub
