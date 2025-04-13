@@ -1,11 +1,28 @@
 import { useContext } from "react";
 import { CartContext } from "./CartContext";
 import { IoClose } from "react-icons/io5";
-import useModal from "../../hooks/useModal";
+import { OrderService } from "../../services/orderService";
+import { Toaster, toast } from 'sonner'
 
 
 export default function CartModal({ isOpen, onClose }) {
-    const { totalPrice, totalProducts, pizzasSlected } = useContext(CartContext)
+    const { totalPrice, totalProducts, pizzasSlected, resetCart} = useContext(CartContext)
+
+    const confirmOrder = async () => {
+        try {
+            toast.promise( await OrderService.createFromCart(pizzasSlected) , {
+                loading: 'Loading...',
+                success: (data) => {
+                    return `Your order has been created!`;
+                },
+                error: 'Error',
+            });
+        } catch (error) {
+            console.log(error);
+        } finally {
+            resetCart();
+        }
+    }
 
     return (
         <>
@@ -37,10 +54,11 @@ export default function CartModal({ isOpen, onClose }) {
                         }
                     </div>
                 </div>
-                <div className="text-black flex justify-between bg-amber-500 px-20 py-4 text-xl font-extrabold">
+                <div className="text-black flex justify-between px-20 py-4 text-xl font-extrabold">
                     <p>Quantity: {totalProducts}</p>
                     <p>Total: $ {totalPrice}</p>
                 </div>
+                <button className=" bg-amber-500 px-20 py-4 text-xl font-extrabold w-full rounded-xl text-white" onClick={confirmOrder}>CONFIRM ORDER</button>
             </div>
 
         </>

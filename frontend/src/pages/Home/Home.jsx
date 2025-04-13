@@ -14,7 +14,7 @@ export default function Home () {
                 const data = await PizzaService.getAll();
                 setPizzas(data);
             } catch (error) {
-                setError(error.message);
+                console.log(error);
             } finally {
                 setLoading(false);
             }
