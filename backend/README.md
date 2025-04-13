@@ -51,9 +51,9 @@ Esto levantará el servidor en http://localhost:5050.
 - DELETE	/:id	Eliminar una orden
 
 # 🔍 Validaciones
--Validación de campos requeridos
--status de orden debe ser pending, completed, o cancelled
--Validación de IDs y URLs
+- Validación de campos requeridos
+- status de orden debe ser pending, completed, o cancelled
+- Validación de IDs y URLs
 
 ## 🧑‍💻 Autora
 Sofía Moneta
