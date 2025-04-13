@@ -1,8 +1,8 @@
 import { createContext, useEffect, useState } from "react";
 
-export const ProductsContexts = createContext({});
+export const CartContext = createContext({});
 
-export const ProductsProvider = (props) => {
+export const CartProvider = (props) => {
     const [pizzasSlected, setPizzasSelected] = useState([])
 
     
@@ -38,8 +38,6 @@ export const ProductsProvider = (props) => {
             }
         });
     };
-//if repeat the pizza, quantity +1
-//Change structure
 
 
 useEffect(() => {
@@ -49,7 +47,7 @@ useEffect(() => {
 
 
     const deletePizzaToCart = (id) => {
-		setImages((prevPizzas) => prevPizzas.filter((pizza) => pizza._id !== id));
+		// setImages((prevPizzas) => prevPizzas.filter((pizza) => pizza._id !== id));
 	};
 
     const resetCart = () => {
@@ -63,5 +61,5 @@ useEffect(() => {
         resetCart
     }
 
-    return <ProductsContexts.Provider value={value}>{props.children}</ProductsContexts.Provider>;
+    return <CartContext.Provider value={value}>{props.children}</CartContext.Provider>;
 }

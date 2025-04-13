@@ -1,10 +1,10 @@
 import { useContext } from "react";
 import { IoAddCircle } from "react-icons/io5";
-import { ProductsContexts } from "../../context/productsContext";
+import { CartContext } from "../../features/cart/CartContext";
 
 export default function PizzaCard ({pizzaData}) {
 
-    const {addPizzaToCart} = useContext(ProductsContexts);
+    const {addPizzaToCart} = useContext(CartContext);
     return(
         <div className="w-2xs rounded-3xl border-solid border-2 p-3 my-3 flex flex-col content-center items-center justify-between " key={pizzaData._id}>
             <img className="w-2/3" src={pizzaData.image}/>
