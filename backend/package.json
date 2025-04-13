@@ -4,6 +4,7 @@
   "description": "Chellenge for CodingCloud",
   "main": "index.js",
   "scripts": {
+    "start": "nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -17,8 +18,13 @@
   },
   "homepage": "https://github.com/moneta-sofia/ChallengeCC#readme",
   "dependencies": {
-    "axios": "^1.8.4",
+    "dotenv": "^16.5.0",
     "express": "^5.1.0",
-    "express-validator": "^7.2.1"
+    "express-validator": "^7.2.1",
+    "mongodb": "^6.15.0",
+    "mongoose": "^8.13.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9"
   }
 }
