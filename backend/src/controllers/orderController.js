@@ -1,4 +1,4 @@
-const { postOrder, getAllOrders, getOneOrder, deleteOrder } = require("../services/orderService")
+const { postOrder, getAllOrders, getOneOrder, deleteOrder, patchOrder } = require("../services/orderService")
 
 
 exports.postOrder = async (req, res) => {
@@ -46,5 +46,17 @@ exports.deleteOrder = async (req, res) => {
     } catch (error) {
         console.error('Error deleting order:');
         res.status(500).json({ message: 'Error deleting order' });
+    }
+}
+
+exports.patchOrder = async (req, res) => {
+    const { id } = req.params;
+    const updatedOrder = req.body;
+    try{
+        const result = await patchOrder(id, updatedOrder);
+        result ? res.status(200).json(result) : res.status(404).json({ message: 'Order with ID ' + id + ' not found' });
+    } catch (error) {
+        console.error('Error updating order:');
+        res.status(500).json({ message: 'Error updating order' });
     }
 }

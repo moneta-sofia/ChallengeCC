@@ -86,8 +86,22 @@ exports.deleteOrder = async (orderId) => {
     try {
         return await Order.findByIdAndDelete(orderId);
     } catch (error) {
-        console.error('Error deleting orders ', error);
-        throw new Error('Error deleting orders');
+        console.error('Error deleting order ', error);
+        throw new Error('Error deleting order');
     }
 }
 
+
+//TODO: refactor
+exports.patchOrder = async (orderId, newOrder) => {
+    try{
+        // Options to return the updated document
+        const options = { new: true};
+        const result = await Order.findByIdAndUpdate(orderId, newOrder, options);
+        return result;
+        //test if there isn't aorder
+    } catch (error) {
+        console.error('Error updating order ', error);
+        throw new Error('Error deleting order');
+    }
+}

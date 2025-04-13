@@ -39,6 +39,34 @@ const validateOrderID = [
     }
 ]
 
+
+const validateOrderPatch = [
+    check('status')
+        .optional()
+        .isIn(['pending', 'completed', 'cancelled'])
+        .withMessage('Status must be one of: pending, completed, cancelled'),
+
+    check('products')
+        .optional()
+        .isArray({min: 1})
+        .withMessage('Products must be a array'),
+
+    check('products.*.pizza._id') 
+        .optional()
+        .isMongoId()
+        .withMessage('Each pizza must have an ID valid'),
+
+    check('products.*.quantity')
+        .optional()
+        .isInt({ min: 1 })
+        .withMessage('Quantity must be an integer greater than 0'),
+
+    (req, res, next) => {
+        validateResults(req, res, next);
+    }
+]
+
+
 module.exports = {
-    validateCreateOrder, validateOrderID
+    validateCreateOrder, validateOrderID, validateOrderPatch
 }
