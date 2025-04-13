@@ -12,9 +12,9 @@ export default function Navbar(){
 
     return(
     <>
-        <div className="fixed w-11/12 rounded-4xl my-5 py-4 px-10 flex justify-between z-3 bg-white">
+        <div className="fixed w-11/12 self-center rounded-4xl my-7 py-4 px-10 flex justify-between z-3 bg-white">
             <div className="flex justify-center items-center">
-                <h1 className="text-xl font-bold">Pizza Challenge</h1>
+                <h1 className="text-4xl font-pizzaria">Pizza Challenge</h1>
             </div>
             <div className="h-full w-auto flex">
                 <button className="mx-3"><FaHistory  className="size-10"/></button>
