@@ -58,7 +58,7 @@ export default function CartModal({ isOpen, onClose }) {
                     <p>Quantity: {totalProducts}</p>
                     <p>Total: $ {totalPrice}</p>
                 </div>
-                <button className=" bg-amber-500 px-20 py-4 text-xl font-extrabold w-full rounded-xl text-white" onClick={confirmOrder}>CONFIRM ORDER</button>
+                <button className=" cursor-pointer active:bg-amber-600 bg-amber-500 px-20 py-4 text-xl font-extrabold w-full rounded-xl text-white" onClick={confirmOrder}>CONFIRM ORDER</button>
             </div>
 
         </>

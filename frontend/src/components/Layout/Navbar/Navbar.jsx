@@ -4,11 +4,13 @@ import { useContext } from "react";
 import { CartContext } from "../../../features/cart/CartContext";
 import CartModal from "../../../features/cart/CartModal";
 import useModal from "../../../hooks/useModal";
+import OrderModal from "../../../features/orders/OrderModal";
 
 
 export default function Navbar(){
     const {totalProducts} = useContext(CartContext)
     const cartModal = useModal();
+    const OrdersModal = useModal();
 
     return(
     <>
@@ -17,7 +19,7 @@ export default function Navbar(){
                 <h1 className="text-4xl font-pizzaria">Pizza Challenge</h1>
             </div>
             <div className="h-full w-auto flex">
-                <button className="mx-3"><FaHistory  className="size-10"/></button>
+                <button className="mx-3 cursor-pointer" onClick={OrdersModal.openModal}><FaHistory  className="size-10"/></button>
                 <div className="relative">
                     <button className="mx-3 cursor-pointer" onClick={cartModal.openModal}><FaCartShopping className="size-10"/></button>
                     {
@@ -27,6 +29,7 @@ export default function Navbar(){
             </div>
         </div>
         {cartModal.isOpen && <CartModal isOpen={cartModal.isOpen} onClose={cartModal.closeModal} />}
+        {OrdersModal.isOpen && <OrderModal isOpen={OrdersModal.isOpen} onClose={OrdersModal.closeModal} />}
     </>
     )
 }
