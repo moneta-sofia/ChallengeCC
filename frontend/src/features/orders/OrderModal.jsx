@@ -4,8 +4,10 @@ import { useEffect, useState } from "react";
 
 export default function OrderModal({ isOpen, onClose }) {
     const [orders, setOrders] = useState([]);
+    const [order, setOrder] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
+    const [showDetails, setShowDetails] = useState(false);
 
     useEffect(() => {
         if (isOpen) {
@@ -20,7 +22,23 @@ export default function OrderModal({ isOpen, onClose }) {
             const ordersData = await OrderService.getAll();
             setOrders(ordersData);
         } catch (err) {
-            setError("Error al cargar las órdenes");
+            setError("Error fetching the orders");
+            console.error("Error fetching orders:", err);
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    const handlerFetchOne = async (id) => {
+        setShowDetails(true);
+
+        try {
+            const orderData = await OrderService.getById(id);
+            console.log(orderData);
+
+            setOrder(orderData);
+        } catch (err) {
+            setError("Error fetching the order");
             console.error("Error fetching orders:", err);
         } finally {
             setLoading(false);
@@ -40,27 +58,54 @@ export default function OrderModal({ isOpen, onClose }) {
                 >
                     <IoClose />
                 </button>
-                <div>
-                    <h1 className="text-4xl font-bold">History orders</h1>
-                    <div className="flex justify-around font-bold text-2xl py-4 border-b-2 mb-5">
-                        <p>Date</p>
-                        <p>State</p>
-                        <p>Price total</p>
+
+                {!showDetails ? (
+                    <div>
+                        <h1 className="text-4xl font-bold">History orders</h1>
+                        <div className="flex justify-around font-bold text-2xl py-4 border-b-2 mb-5">
+                            <p>Date</p>
+                            <p>State</p>
+                            <p>Price total</p>
+                        </div>
+                        {loading && <div>Loading</div>}
+                        <div className="overflow-y-auto max-h-[60vh]">
+                            {orders &&
+                                orders.map((order) => {
+                                    return (
+                                        <button
+                                            onClick={() => handlerFetchOne(order._id)}
+                                            className="w-full hover:bg-gray-200 cursor-pointer flex justify-between px-10 py-3"
+                                        >
+                                            <p>{new Date(order.date).toLocaleString("es-AR")}</p>
+                                            <p>{order.status}</p>
+                                            <p>$ {order.total}</p>
+                                        </button>
+                                    );
+                                })}
+                        </div>
                     </div>
-                    {loading && <div>Loading</div>}
-                    <div className="overflow-y-auto max-h-[60vh]">
-                        {orders &&
-                            orders.map((order) => {
-                                return (
-                                    <div className="hover:bg-gray-200 cursor-pointer flex justify-between px-10 py-3">
-                                        <p>{new Date(order.date).toLocaleString("es-AR")}</p>
-                                        <p>{order.status}</p>
-                                        <p>$ {order.total}</p>
-                                    </div>
-                                );
-                            })}
+                ) : (
+                    <div>
+                        <h1 className="text-4xl font-bold">Detail order</h1>
+                        <div>
+                            <p className="text-xl font-bold my-5">Products:</p>
+                            {Array.isArray(order.products) &&
+                                order?.products.map((product) => {
+                                    return (
+                                        <div className="flex w-full justify-between text-left">
+                                            <div> {product.pizza.name}</div>
+                                            <div> ${product.pizza.price} </div>
+                                            <div> {product.quantity} </div>
+                                        </div>
+                                    );
+                                })}
+                                <div className="flex justify-between mt-7 font-bold">
+                                    <p>{new Date(order.date).toLocaleString("es-AR")}</p>
+                                    <p>Total: ${order.total}</p>
+                                </div>
+                        </div>
                     </div>
-                </div>
+                )}
             </div>
         </div>
     );
