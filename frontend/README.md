@@ -30,6 +30,6 @@ Esto abrirá automáticamente la app en tu navegador (http://localhost:5173 o si
 
 Asegurate de que el backend esté corriendo en http://localhost:5050/api.
 
-🌐 Conexión con el Backend
+## 🌐 Conexión con el Backend
 Las peticiones HTTP se realizan con Axios hacia http://localhost:5050/api. Si tu backend corre en otro puerto o dominio, modificá la URL base en los servicios (/services/*.js).
 
