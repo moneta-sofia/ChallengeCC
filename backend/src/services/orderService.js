@@ -9,28 +9,51 @@ exports.postOrder = async (order) => {
         let nullPizzaId;
 
         //TODO: refactor a better validation
-        
-        const pizzas = await Promise.all(
+
+        const allPizzasEmbebed = await Promise.all(
             products.map(async (p) => {
                 const pizza = await pizzaService.getOnePizza(p.pizza);
+
+                // Check if any ID is wrong
                 if (pizza === null) {
                     nullPizzaId = p.pizza;
+                    return;
                 }
-                return pizza;
+                console.log(p.quantity);
+                
+                return {
+                    pizza: {
+                        _id: pizza._id,
+                        name: pizza.name,
+                        price: pizza.price,
+                        ingredients: pizza.ingredients,
+                        image: pizza.image
+                    },
+                    quantity: p.quantity
+                };
             })
         );
+
+        console.log(allPizzasEmbebed);
+        console.log(nullPizzaId);
+        
 
         if (nullPizzaId) {
             return nullPizzaId;
         }
 
-        const total = products.reduce((sum, product, index) => {
-            return sum + (product.quantity * pizzas[index].price);
+        // Sum all pizza's prices
+        const total = allPizzasEmbebed.reduce((sum, piz) => {
+            return sum + (piz.quantity * piz.pizza.price);
         }, 0);
+
+
+        console.log(total);
+        
 
         const newOrder = new Order({
             status,
-            products,
+            products: allPizzasEmbebed,
             date,
             total
         });
@@ -40,3 +63,5 @@ exports.postOrder = async (order) => {
         throw new Error('Error creating order');
     }
 }
+
+

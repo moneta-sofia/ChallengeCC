@@ -9,14 +9,31 @@ const OrderSchema = new Schema({
     },
     products: [{
         pizza: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'Pizza',
-            required: true,
+            _id: {
+                type: mongoose.Schema.Types.ObjectId,
+                required: true
+            },
+            name: {
+                type: String,
+                required: true
+            },
+            price: {
+                type: Number,
+                required: true
+            },
+            ingredients: {
+                type: [String],
+                required: true
+            },
+            image: {
+                type: String,
+                required: true
+            }
         },
         quantity: {
             type: Number,
             required: true,
-            min:1,
+            min: 1,
         },
         _id: false,
     }],
