@@ -46,8 +46,24 @@ useEffect(() => {
 },[pizzasSlected])
 
 
-    const deletePizzaToCart = (id) => {
-		// setImages((prevPizzas) => prevPizzas.filter((pizza) => pizza._id !== id));
+    const deletePizzaFromCart = (pizzaData) => {
+        setPizzasSelected((prevPizzas) => {
+
+            const pizzaIndex = prevPizzas.findIndex(
+                item => item.pizza._id === pizzaData._id                        
+            );
+            
+            if (prevPizzas[pizzaIndex].quantity >= 1) {    
+                const updatedPizzas = [...prevPizzas];
+                updatedPizzas[pizzaIndex] = {                          
+                    ...updatedPizzas[pizzaIndex],                      
+                    quantity: updatedPizzas[pizzaIndex].quantity - 1   
+                };
+                return updatedPizzas;
+            } else {
+                return prevPizzas.filter((_, index) => index !== pizzaIndex);
+            }
+        });
 	};
 
     const resetCart = () => {
@@ -57,7 +73,7 @@ useEffect(() => {
     const value = {
         pizzasSlected,
         addPizzaToCart,
-        deletePizzaToCart,
+        deletePizzaFromCart,
         resetCart
     }
 
