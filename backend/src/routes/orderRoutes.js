@@ -1,6 +1,6 @@
 const express = require('express');
 const { db } = require("../db/connection");
-const { postOrder } = require('../controllers/orderController');
+const { postOrder, getAllOrders } = require('../controllers/orderController');
 const { validateCreateOrder } = require('../validators/orderValidator');
 
 
@@ -8,5 +8,6 @@ const { validateCreateOrder } = require('../validators/orderValidator');
 const router = express.Router();
 
 router.post('/', validateCreateOrder, postOrder)
+router.get('/', getAllOrders)
 
 module.exports = router;  

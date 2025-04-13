@@ -65,3 +65,12 @@ exports.postOrder = async (order) => {
 }
 
 
+exports.getAllOrders = async () => {
+    try {
+        return await Order.find().sort({date: -1});
+    } catch (error) {
+        console.error('Error getting all orders ', error);
+        throw new Error('Error getting all orders');
+    }
+}
+
