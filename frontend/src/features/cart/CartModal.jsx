@@ -39,7 +39,7 @@ export default function CartModal({ isOpen, onClose }) {
                         <p>Quantity</p>
                         <p>Price</p>
                     </div>
-                    <div className="h-full border-2 border-amber-300">
+                    <div className="overflow-y-auto max-h-[40vh] border-2 border-amber-300">
                         {
                             pizzasSlected.map((pizza) => {
                                 return (
