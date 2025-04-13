@@ -20,6 +20,10 @@ const OrderSchema = new Schema({
         },
         _id: false,
     }],
+    total: {
+        type: Number,
+        // required: true,
+    },
     date: {
         type: Date,
         default: Date.now,
