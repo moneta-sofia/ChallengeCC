@@ -27,29 +27,27 @@ Ambas aplicaciones funcionan localmente de manera independiente pero están cone
 
 ### 1. Cloná el repositorio
 
-```bash
+```
 git clone https://github.com/moneta-sofia/ChallengeCC.git
 cd ChallengeCC
+```
+
 2. Iniciar Backend
-bash
-Copy
-Edit
+```
 cd backend
 npm install
 npm start
+```
 Asegurate de tener una base de datos MongoDB corriendo y la variable MONGODB_URI en un archivo .env. 
 
 
 3. Iniciar Frontend
 En una nueva terminal:
-
-bash
-Copy
-Edit
+```
 cd frontend
 npm install
 npm run dev
-
+```
 
 
 ## 🧑‍💻 Autora
