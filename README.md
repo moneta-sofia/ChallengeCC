@@ -52,4 +52,3 @@ npm run dev
 
 ## 🧑‍💻 Autora
 Sofía Moneta
-Repositorio en GitHub
