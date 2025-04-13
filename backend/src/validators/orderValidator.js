@@ -1,4 +1,4 @@
-const { check } = require('express-validator');
+const { check, param } = require('express-validator');
 const { validateResults } = require('./validatorHelper');
 
 const validateCreateOrder = [
@@ -30,6 +30,15 @@ const validateCreateOrder = [
 ];
 
 
+const validateOrderID = [
+    param('id')
+        .isMongoId().withMessage('Must be a valid ID')
+        .notEmpty().withMessage('ID is required'),
+    (req, res, next) => {
+        validateResults(req, res, next);
+    }
+]
+
 module.exports = {
-    validateCreateOrder
+    validateCreateOrder, validateOrderID
 }

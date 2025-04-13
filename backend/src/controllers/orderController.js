@@ -1,4 +1,4 @@
-const { postOrder, getAllOrders } = require("../services/orderService")
+const { postOrder, getAllOrders, getOneOrder } = require("../services/orderService")
 
 
 exports.postOrder = async (req, res) => {
@@ -23,5 +23,16 @@ exports.getAllOrders = async (req, res) => {
     } catch (error) {
         console.error('Error getting all orders:', error);
         res.status(500).json({ message: 'Error getting all orders' });
+    }
+}
+
+exports.getOneOrder = async (req, res) => {
+    const { id } = req.params;
+    try{
+        const foundOrder = await getOneOrder(id);
+        foundOrder ? res.status(200).json(foundOrder) : res.status(404).json({ message: 'Order with ID ' + id + " no exists"});
+    } catch (error) {
+        console.error('Error getting order:');
+        res.status(500).json({ message: 'Error getting order' });
     }
 }
