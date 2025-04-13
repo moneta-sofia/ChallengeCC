@@ -23,12 +23,12 @@ export default function Home () {
     }, [])
 
     return(
-        <div className="w-full bg-red-400">
+        <div className="w-full">
             <h1>Here you can find the best pizzas!</h1>
             <div className="flex flex-wrap  justify-between">
                 {
                     pizzas.map((pizza) => {
-                        return <PizzaCard pizzaData={pizza}/>
+                        return <PizzaCard pizzaData={pizza} key={pizza._id}/>
                     })
                 }
 
