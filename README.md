@@ -1,47 +1,61 @@
-Challenge for Fullstack Developer
-===============================
+# 🍕 Challenge Fullstack - Pizza Shop
 
-This is intended to be developed within 2 to 4 hours (plus prep time if using an unfamiliar language).
+Este proyecto es una aplicación fullstack desarrollada para el challenge de **CodingCloud**. Simula una tienda de pizzas donde los usuarios pueden explorar productos, agregarlos al carrito y generar órdenes.
 
+## 🧩 Arquitectura
 
-Evaluation
-----------
+El proyecto está dividido en dos partes principales:
 
-Our goal is to find answers to these questions on the backend:
-* Do your tests reflect best practices such as BDD?
-* Do you understand RESTful interfaces?
-* Do you follow SOLID principles?
-* Do you know how to use Express Validator
-* Do you know how to use JEST
+- 📦 **Backend**: API REST construida con Node.js, Express y MongoDB.
+- 🎨 **Frontend**: Interfaz de usuario hecha con React, Vite y TailwindCSS.
 
+Ambas aplicaciones funcionan localmente de manera independiente pero están conectadas entre sí.
 
-Our goal is to find answers to these questions on the frontend:
-* Do you understand the JavaScript language and more in general web technologies?
-* Can you design interfaces that are clear and easy to use?
-* Do you know how to make unit test in front env. 
+---
 
+## 🛠 Tecnologías utilizadas
 
-Our goal is to find answers to these questions in general:
-* Do you understand the chosen stack, framework, and MVC pattern in general?
-* Can you judge which library/framework is the best fit for a job and use it correctly?
-* Do you master your working environment?
+| Área     | Tecnologías                                        |
+|----------|----------------------------------------------------|
+| Frontend | React, Vite, TailwindCSS, Axios, React Icons       |
+| Backend  | Node.js, Express, MongoDB, Mongoose, dotenv        |
+| Extras   | Sonner (notificaciones), express-validator, CORS   |
 
+---
 
-Definition of DONE
-----------
+## 📬 Colección de Postman
 
-Each of the developed challenges, should consider the following requirements in order to be considered as DONE: 
-*   The actual code
-*   Unit Test
-*   Express Validation Schema
-*   Postman mockup example
-*   Resume or Documentation
+Podés revisar y probar todos los endpoints desde esta colección pública en Postman:
+
+👉 [Abrir en Postman](https://www.postman.com/elxrojoxteam/challengecc/request/rvyjliq)
 
 
-Deliverables
-----------
+## 🚀 ¿Cómo ejecutar el proyecto?
 
-Prioritize the requirement accomplishment over non-requested enhancements; although enhancements will be considered, the goal is to present a decent and understandable application to the user.
+### 1. Cloná el repositorio
 
-* Link to Github repo
-* Instructions how to run the app
+```
+git clone https://github.com/moneta-sofia/ChallengeCC.git
+cd ChallengeCC
+```
+
+2. Iniciar Backend
+```
+cd backend
+npm install
+npm start
+```
+Asegurate de tener una base de datos MongoDB corriendo y la variable MONGODB_URI en un archivo .env. 
+
+
+3. Iniciar Frontend
+En una nueva terminal:
+```
+cd frontend
+npm install
+npm run dev
+```
+
+
+## 🧑‍💻 Autora
+Sofía Moneta

@@ -1,12 +1,35 @@
-# React + Vite
+# 🎨 Frontend - Pizza Shop UI
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este es el frontend de la aplicación de pedidos de pizza. Permite ver el catálogo de productos, añadir al carrito y generar órdenes.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## ⚙️ Tecnologías
 
-## Expanding the ESLint configuration
+- React 19 + Vite
+- TailwindCSS
+- Axios
+- React Icons
+- Sonner (notificaciones)
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 🚀 ¿Cómo correr el frontend?
+
+### 1. Instalá dependencias
+
+```
+npm install
+```
+
+2. Ejecutá el proyecto
+```
+npm run dev
+```
+Esto abrirá automáticamente la app en tu navegador (http://localhost:5173 o similar).
+
+Asegurate de que el backend esté corriendo en http://localhost:5050/api.
+
+## 🌐 Conexión con el Backend
+Las peticiones HTTP se realizan con Axios hacia http://localhost:5050/api. Si tu backend corre en otro puerto o dominio, modificá la URL base en los servicios (/services/*.js).
+
