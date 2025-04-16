@@ -1,5 +1,4 @@
 import axios from 'axios';
-const dotenv = require('dotenv').config();
 
 
 const api = axios.create({
